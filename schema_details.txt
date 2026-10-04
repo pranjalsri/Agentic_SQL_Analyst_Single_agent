@@ -1,0 +1,138 @@
+Database Schema: staging
+
+Table: V_STG_BALANCE_VAULT
+  Column: LOAD_DATE, Data Type: TIMESTAMP_LTZ
+  Column: CURRENT_BALANCE, Data Type: NUMBER
+  Column: HUB_CUSTOMER_HK, Data Type: TEXT
+  Column: SAT_BALANCE_HASH_DIFF, Data Type: TEXT
+  Column: BRANCH_CODE, Data Type: TEXT
+  Column: SNAPSHOT_DATE, Data Type: DATE
+  Column: CURRENCY, Data Type: TEXT
+  Column: AVAILABLE_BALANCE, Data Type: NUMBER
+  Column: RECORD_SOURCE, Data Type: TEXT
+  Column: HUB_ACCOUNT_HK, Data Type: TEXT
+  Column: ACCOUNT_ID, Data Type: TEXT
+  Column: LNK_CUST_ACCT_HK, Data Type: TEXT
+  Column: ACCOUNT_TYPE, Data Type: TEXT
+  Column: CUSTOMER_ID, Data Type: TEXT
+  Column: STATUS, Data Type: TEXT
+  Sample Data:
+    ('ACCT-1001', 'CUST-0012', 'a3132ef85bff73dbaf3ee4f5eb1e218c', '5102a37fcffc685471c6cef402e815db', '9b5d0ca5ce3a4998a2d37779e2851b0d', '4e15abdc745fc25a5c31d034c7ea460b', 'CHECKING', Decimal('45230.50'), Decimal('45121.18'), 'SEK', 'BR-STO-01', 'ACTIVE', None, datetime.datetime(2026, 10, 2, 6, 31, 6, 895000, tzinfo=<DstTzInfo 'America/Los_Angeles' PDT-1 day, 17:00:00 DST>), 'CORE_BANKING')
+    ('ACCT-1002', 'CUST-0892', 'bba669f1dbe044a53233b20f5bed2895', '218f000c7a5c3e149d0f15561f772443', 'c4f73c9d90bbc18ba0adf78607916e9e', '9ec618989e85f54cdf98e6cb4e14d30f', 'SAVINGS', Decimal('128500.00'), Decimal('128247.32'), 'SEK', 'BR-STO-02', 'ACTIVE', None, datetime.datetime(2026, 10, 2, 6, 31, 6, 895000, tzinfo=<DstTzInfo 'America/Los_Angeles' PDT-1 day, 17:00:00 DST>), 'CORE_BANKING')
+    ('ACCT-1003', 'CUST-0331', 'af297a0fc7fd4909d35fa2f5bc450a26', 'c82e0d7bc1e262f02bce97ba7797c318', '12c7c6fc8488d48499c542a686cf64a6', '3acd6ae85378530a3b50f7e9f773f350', 'CHECKING', Decimal('3210.75'), Decimal('3197.48'), 'SEK', 'BR-STO-03', 'SUSPENDED', None, datetime.datetime(2026, 10, 2, 6, 31, 6, 895000, tzinfo=<DstTzInfo 'America/Los_Angeles' PDT-1 day, 17:00:00 DST>), 'CORE_BANKING')
+    ('ACCT-1004', 'CUST-0415', '985666c9c33d21afea74b4f2dbd91931', '95dec4ad12c02d3b2547e50ef304e503', '0b7a2d9d8d4a06977fadec459abd3ac2', '6f21d08110fecc34635a578ce11e76eb', 'SAVINGS', Decimal('89400.25'), Decimal('89300.83'), 'SEK', 'BR-STO-04', 'ACTIVE', None, datetime.datetime(2026, 10, 2, 6, 31, 6, 895000, tzinfo=<DstTzInfo 'America/Los_Angeles' PDT-1 day, 17:00:00 DST>), 'CORE_BANKING')
+    ('ACCT-1005', 'CUST-0722', 'a12c21bc2a6c68474d5abb1033af0354', '3726850263eb17dc3e99fbfd1a4add36', 'd716a138038266a5bfda9e4669e90c3f', '4e102ce1fb739dcde54755df16191a30', 'CHECKING', Decimal('1540.00'), Decimal('1215.06'), 'SEK', 'BR-STO-05', 'ACTIVE', None, datetime.datetime(2026, 10, 2, 6, 31, 6, 895000, tzinfo=<DstTzInfo 'America/Los_Angeles' PDT-1 day, 17:00:00 DST>), 'CORE_BANKING')
+
+Table: STG_DAILY_CUSTOMER
+  Column: ADDRESS_LINE, Data Type: TEXT
+  Column: STATUS, Data Type: TEXT
+  Column: FIRST_NAME, Data Type: TEXT
+  Column: LAST_NAME, Data Type: TEXT
+  Column: CITY, Data Type: TEXT
+  Column: EMAIL, Data Type: TEXT
+  Column: UPDATED_AT, Data Type: TIMESTAMP_NTZ
+  Column: PHONE, Data Type: TEXT
+  Column: COUNTRY, Data Type: TEXT
+  Column: SOURCE_SYSTEM, Data Type: TEXT
+  Column: CUSTOMER_ID, Data Type: TEXT
+  Sample Data:
+    ('CUST-0012', 'Pranjal', 'Srivastava', 'pranjal.s@example.com', '46701234567', 'Sollentuna Central 12', 'Stockholm', 'SE', 'ACTIVE', datetime.datetime(2026, 9, 12, 8, 30), 'CRM_SALESFORCE')
+    ('CUST-0892', 'Abhilasha', 'Kumari', 'abhilasha.k@example.com', '46709876543', 'Kungsgatan 44', 'Stockholm', 'SE', 'ACTIVE', datetime.datetime(2026, 9, 12, 9, 15, 22), 'CRM_SALESFORCE')
+    ('CUST-0331', 'Erik', 'Lindqvist', 'erik.l@example.se', '46731112233', 'Stortorget 5', 'Gothenburg', 'SE', 'SUSPENDED', datetime.datetime(2026, 9, 12, 10, 5, 11), 'CORE_BANKING')
+    ('CUST-0415', 'Sophia', 'Ahlström', 'sophia.a@example.se', '46765554433', 'Avenyn 18', 'Gothenburg', 'SE', 'ACTIVE', datetime.datetime(2026, 9, 12, 11, 42), 'CRM_SALESFORCE')
+    ('CUST-0722', 'Marcus', 'Wallin', 'marcus.w@example.com', '46723338899', 'Drottninggatan 102', 'Malmö', 'SE', 'CLOSED', datetime.datetime(2026, 9, 12, 12, 0, 30), 'CORE_BANKING')
+
+Table: STG_DAILY_TRANSACTIONS
+  Column: TXN_TIMESTAMP, Data Type: TIMESTAMP_NTZ
+  Column: AMOUNT, Data Type: NUMBER
+  Column: ACCOUNT_ID, Data Type: TEXT
+  Column: CURRENCY_CODE, Data Type: TEXT
+  Column: TXN_TYPE, Data Type: TEXT
+  Column: LOAD_DATE, Data Type: TIMESTAMP_NTZ
+  Column: MERCHANT_NAME, Data Type: TEXT
+  Column: CUSTOMER_ID, Data Type: TEXT
+  Column: TRANSACTION_ID, Data Type: TEXT
+  Column: SOURCE_SYSTEM, Data Type: TEXT
+  Sample Data:
+    ('TXN-20260912-0001', 'ACCT-1001', 'CUST-0012', datetime.datetime(2026, 9, 12, 7, 45), 'TRANSFER', Decimal('804.87'), 'SEK', 'Coop Forum', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'PAYMENT_GATEWAY')
+    ('TXN-20260912-0002', 'ACCT-1002', 'CUST-0892', datetime.datetime(2026, 9, 12, 8, 30), 'ATM_WITHDRAWAL', Decimal('46.38'), 'SEK', 'Pressbyrån', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'CORE_BANKING')
+    ('TXN-20260912-0003', 'ACCT-1003', 'CUST-0331', datetime.datetime(2026, 9, 12, 9, 15), 'DIRECT_DEBIT', Decimal('355.02'), 'SEK', 'SL Center', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'PAYMENT_GATEWAY')
+    ('TXN-20260912-0004', 'ACCT-1004', 'CUST-0415', datetime.datetime(2026, 9, 12, 10, 0), 'CARD_PAYMENT', Decimal('291.05'), 'SEK', 'Systembolaget', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'CORE_BANKING')
+    ('TXN-20260912-0005', 'ACCT-1005', 'CUST-0722', datetime.datetime(2026, 9, 12, 10, 45), 'TRANSFER', Decimal('924.67'), 'SEK', 'H&M Stockholm', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'PAYMENT_GATEWAY')
+
+Table: STG_WEEKLY_ACCOUNT_BALANCES
+  Column: STATUS, Data Type: TEXT
+  Column: SNAPSHOT_DATE, Data Type: DATE
+  Column: ACCOUNT_ID, Data Type: TEXT
+  Column: ACCOUNT_TYPE, Data Type: TEXT
+  Column: CUSTOMER_ID, Data Type: TEXT
+  Column: BRANCH_CODE, Data Type: TEXT
+  Column: SOURCE_SYSTEM, Data Type: TEXT
+  Column: CURRENT_BALANCE, Data Type: NUMBER
+  Column: CURRENCY, Data Type: TEXT
+  Column: AVAILABLE_BALANCE, Data Type: NUMBER
+  Sample Data:
+    ('ACCT-1001', 'CUST-0012', None, 'CHECKING', Decimal('45230.50'), Decimal('45121.18'), 'SEK', 'BR-STO-01', 'ACTIVE', 'CORE_BANKING')
+    ('ACCT-1002', 'CUST-0892', None, 'SAVINGS', Decimal('128500.00'), Decimal('128247.32'), 'SEK', 'BR-STO-02', 'ACTIVE', 'CORE_BANKING')
+    ('ACCT-1003', 'CUST-0331', None, 'CHECKING', Decimal('3210.75'), Decimal('3197.48'), 'SEK', 'BR-STO-03', 'SUSPENDED', 'CORE_BANKING')
+    ('ACCT-1004', 'CUST-0415', None, 'SAVINGS', Decimal('89400.25'), Decimal('89300.83'), 'SEK', 'BR-STO-04', 'ACTIVE', 'CORE_BANKING')
+    ('ACCT-1005', 'CUST-0722', None, 'CHECKING', Decimal('1540.00'), Decimal('1215.06'), 'SEK', 'BR-STO-05', 'ACTIVE', 'CORE_BANKING')
+
+Table: V_STG_CUSTOMER_VAULT
+  Column: CITY, Data Type: TEXT
+  Column: LOAD_DATE, Data Type: TIMESTAMP_NTZ
+  Column: COUNTRY, Data Type: TEXT
+  Column: FIRST_NAME, Data Type: TEXT
+  Column: HUB_CUSTOMER_HK, Data Type: TEXT
+  Column: SAT_CUSTOMER_HASH_DIFF, Data Type: TEXT
+  Column: PHONE, Data Type: TEXT
+  Column: LAST_NAME, Data Type: TEXT
+  Column: ADDRESS_LINE, Data Type: TEXT
+  Column: CUSTOMER_ID, Data Type: TEXT
+  Column: STATUS, Data Type: TEXT
+  Column: EMAIL, Data Type: TEXT
+  Column: RECORD_SOURCE, Data Type: TEXT
+  Sample Data:
+    ('CUST-0012', '5102a37fcffc685471c6cef402e815db', '54911cfaf598012e7c175e6181148797', 'Pranjal', 'Srivastava', 'pranjal.s@example.com', '46701234567', 'Sollentuna Central 12', 'Stockholm', 'SE', 'ACTIVE', datetime.datetime(2026, 9, 12, 8, 30), 'CRM_SALESFORCE')
+    ('CUST-0892', '218f000c7a5c3e149d0f15561f772443', '56c2e1bf78736e7e965062037bb984ca', 'Abhilasha', 'Kumari', 'abhilasha.k@example.com', '46709876543', 'Kungsgatan 44', 'Stockholm', 'SE', 'ACTIVE', datetime.datetime(2026, 9, 12, 9, 15, 22), 'CRM_SALESFORCE')
+    ('CUST-0331', 'c82e0d7bc1e262f02bce97ba7797c318', '85fe4bfaf5e26ba51a74da93617dc23a', 'Erik', 'Lindqvist', 'erik.l@example.se', '46731112233', 'Stortorget 5', 'Gothenburg', 'SE', 'SUSPENDED', datetime.datetime(2026, 9, 12, 10, 5, 11), 'CORE_BANKING')
+    ('CUST-0415', '95dec4ad12c02d3b2547e50ef304e503', '1c2f6fb9d8be1b977034a1d76c2ea855', 'Sophia', 'Ahlström', 'sophia.a@example.se', '46765554433', 'Avenyn 18', 'Gothenburg', 'SE', 'ACTIVE', datetime.datetime(2026, 9, 12, 11, 42), 'CRM_SALESFORCE')
+    ('CUST-0722', '3726850263eb17dc3e99fbfd1a4add36', 'f2e5b8a8f6a6fefb1acc038c66d81ec6', 'Marcus', 'Wallin', 'marcus.w@example.com', '46723338899', 'Drottninggatan 102', 'Malmö', 'SE', 'CLOSED', datetime.datetime(2026, 9, 12, 12, 0, 30), 'CORE_BANKING')
+
+Table: V_STG_TRANSACTION_VAULT
+  Column: CUSTOMER_ID, Data Type: TEXT
+  Column: HUB_CUSTOMER_HK, Data Type: TEXT
+  Column: LOAD_DATE, Data Type: TIMESTAMP_NTZ
+  Column: TXN_TIMESTAMP, Data Type: TIMESTAMP_NTZ
+  Column: MERCHANT_NAME, Data Type: TEXT
+  Column: LNK_CUST_ACCT_HK, Data Type: TEXT
+  Column: TXN_TYPE, Data Type: TEXT
+  Column: HUB_ACCOUNT_HK, Data Type: TEXT
+  Column: CURRENCY_CODE, Data Type: TEXT
+  Column: TRANSACTION_ID, Data Type: TEXT
+  Column: ACCOUNT_ID, Data Type: TEXT
+  Column: HASH_DIFF, Data Type: TEXT
+  Column: AMOUNT, Data Type: NUMBER
+  Column: RECORD_SOURCE, Data Type: TEXT
+  Column: HUB_TRANSACTION_HK, Data Type: TEXT
+  Sample Data:
+    ('TXN-20260912-0001', 'ACCT-1001', 'CUST-0012', 'eeaaf3d58b44cfbc7e6209fbef576394b304e6ec286e4da092b2934b91fcce9c', '2247c589575670d7906fc222f92d882ea02420120cf5ef93600e13cec94f995f', 'adcb458bd3ad84909182c5068c1ce53f489826c19fe25178d9ab76373819f60c', '3016e2d03dcc4ea674215a5ea2c07afd9b851e8c27a6cf78e2424491c91765c7', datetime.datetime(2026, 9, 12, 7, 45), 'TRANSFER', Decimal('804.87'), 'SEK', 'Coop Forum', 'e91c7d82663009b7ca928decdf923384f2f8fd5ec2ebffe35294aaede7f084bf', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'PAYMENT_GATEWAY')
+    ('TXN-20260912-0002', 'ACCT-1002', 'CUST-0892', '86b9b1bc761cd10ad30c3c38cb820965cda40fd5a7532319a29a57587e5288ed', '5d7c67e478a31151d708a9f52673171fc551705eef73ea21c799299e9ce2eca6', '892841f96650bd058e9f814b231f0c8d915911e9e0efc42849117c7e4f92e916', 'a7f1e70b8c8dbe4c3ffe71192bac89b32bf027fc21a15718a9e62482b6b03e74', datetime.datetime(2026, 9, 12, 8, 30), 'ATM_WITHDRAWAL', Decimal('46.38'), 'SEK', 'Pressbyrån', '055bbb2e9fd0c1d5736c56881e2650da54ac034de55dc6690db07cba41ba9864', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'CORE_BANKING')
+    ('TXN-20260912-0003', 'ACCT-1003', 'CUST-0331', 'e1e7d15699605017f4a5dc830ff515e2c8b6a8999924a157465c2fc57a59afe4', 'd3910d5d03bca52f49f9ac93cc78b1ae70cb03820367fdbea5f1cde588aa59b6', '755d57176e870bb69bbf6a4c33b510ce03a1dd875a616a2c4d849a4ffbb618a5', '5833bc72b84caa2f9af2e641a714c617e7dd9a872420d057a81d5dd3ebc4a10b', datetime.datetime(2026, 9, 12, 9, 15), 'DIRECT_DEBIT', Decimal('355.02'), 'SEK', 'SL Center', 'b9836093675e2f6d8d58b6442503ce4592379ed2c6b5fad28fbd87c02d9fa176', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'PAYMENT_GATEWAY')
+    ('TXN-20260912-0004', 'ACCT-1004', 'CUST-0415', 'e2df3a559b34f967e1db7cf6f3d82aeeb7f40b3fdc8a79067387793cccf6072b', '234464f0abe38df3f9bc925bd11506b9bd9a605ae16bb1210a27b2a7264dd5dc', '9844d07f1dbebd115ccbef7b0a1cb42c02827b02cb88b710b78a82b0a5f7fb01', '5b64b48d318205e2ce3515ad722b25d7de8712d9f91b3e11cf6425a3de401602', datetime.datetime(2026, 9, 12, 10, 0), 'CARD_PAYMENT', Decimal('291.05'), 'SEK', 'Systembolaget', '24f7eaec18e5c02dda5d720f990e468ef79ec0a35750b822a8fab680f71f9b7e', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'CORE_BANKING')
+    ('TXN-20260912-0005', 'ACCT-1005', 'CUST-0722', '5fe5825b97f288efbf85f7ee1a56b19f381706e4791036744c4a8ba94c646d3a', '80e8ac33fd26e024ac4fc0277ef6b0233819cbaa27b621e08eca4f10a6f8be7c', 'd3698859650ef7b23109f2d5a45d400a7fd55b7dbe3bea573067cbdc729387df', '921c408b3d0c7b5184e4b653c342aec767082c90f311817fa04f296028c29e83', datetime.datetime(2026, 9, 12, 10, 45), 'TRANSFER', Decimal('924.67'), 'SEK', 'H&M Stockholm', '7fd951375e16e4b1b6c1943d0e7a5e6f51f8a7c07f924594196b67fbbf2348f5', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'PAYMENT_GATEWAY')
+
+Table: V_STG_CUST_ACCT_VAULT
+  Column: HUB_CUSTOMER_HK, Data Type: TEXT
+  Column: RECORD_SOURCE, Data Type: TEXT
+  Column: ACCOUNT_ID, Data Type: TEXT
+  Column: LNK_CUST_ACCT_HK, Data Type: TEXT
+  Column: CUSTOMER_ID, Data Type: TEXT
+  Column: HUB_ACCOUNT_HK, Data Type: TEXT
+  Column: LOAD_DATE, Data Type: TIMESTAMP_NTZ
+  Sample Data:
+    ('CUST-0012', 'ACCT-1001', 'adcb458bd3ad84909182c5068c1ce53f489826c19fe25178d9ab76373819f60c', '2247c589575670d7906fc222f92d882ea02420120cf5ef93600e13cec94f995f', '0c32f055658c2f1f5aec651cf602d40d1df96c89de526ddf9fa1d0c0ddc044c0', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'PAYMENT_GATEWAY')
+    ('CUST-0892', 'ACCT-1002', '892841f96650bd058e9f814b231f0c8d915911e9e0efc42849117c7e4f92e916', '5d7c67e478a31151d708a9f52673171fc551705eef73ea21c799299e9ce2eca6', 'ec2ca885db4fdf16556d4c40e38e15fd39f927286c34293b85fe91fc8e26c40f', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'CORE_BANKING')
+    ('CUST-0331', 'ACCT-1003', '755d57176e870bb69bbf6a4c33b510ce03a1dd875a616a2c4d849a4ffbb618a5', 'd3910d5d03bca52f49f9ac93cc78b1ae70cb03820367fdbea5f1cde588aa59b6', 'a482a1e319990a6a0cf8dd6e988d0c865b5c7d64ddbbfafc236439954ddd3695', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'PAYMENT_GATEWAY')
+    ('CUST-0415', 'ACCT-1004', '9844d07f1dbebd115ccbef7b0a1cb42c02827b02cb88b710b78a82b0a5f7fb01', '234464f0abe38df3f9bc925bd11506b9bd9a605ae16bb1210a27b2a7264dd5dc', 'cba446853e150e07f1feeddffe0f15d172d3ecbbc4c88c821dad4862ef60b560', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'CORE_BANKING')
+    ('CUST-0722', 'ACCT-1005', 'd3698859650ef7b23109f2d5a45d400a7fd55b7dbe3bea573067cbdc729387df', '80e8ac33fd26e024ac4fc0277ef6b0233819cbaa27b621e08eca4f10a6f8be7c', '357241284133a3b1e162c30cd51342dbec4433bcbf6197de27050f9616d1a6ee', datetime.datetime(2026, 9, 12, 5, 58, 30, 648000), 'PAYMENT_GATEWAY')
