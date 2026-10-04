@@ -1,8 +1,18 @@
 # Agentic SQL Analyst
 
-An AI-powered SQL assistant built to turn natural-language business questions into safe Snowflake SQL, validate the query before execution, and return a concise human-readable answer.
+## About Solution 
 
-This project combines LangGraph orchestration, Ollama-hosted LLMs, and Snowflake metadata inspection to create a lightweight "SQL analyst" agent that works directly against a database schema.
+This project is designed as an enterprise-ready AI data access pattern for business users who need analytical answers without writing SQL manually. It provides a governed interface where a natural-language question is transformed into a safe, schema-aware Snowflake query, validated before execution, and then returned as a clear business-friendly response.
+
+From a solution architecture perspective, the system demonstrates a practical pattern for combining:
+
+- conversational AI for user interaction
+- orchestration logic for multi-step reasoning
+- metadata-driven schema understanding from Snowflake
+- guardrails for safe read-only database access
+- LLM-generated insights presented in a non-technical format
+
+The architecture supports a modern data platform pattern where self-service analytics is enabled while keeping execution boundaries controlled and auditable.
 
 ## Overview
 
